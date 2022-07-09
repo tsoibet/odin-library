@@ -17,18 +17,16 @@ Book.prototype.info = function() {
     return bookInfo
 }
 
-// takes user’s input and stores the new book objects into an array
-function addBookToLibrary(book) {
-
-    myLibrary.append(book);
+function addBookToLibrary(title, author, pages, isRead) { 
+    const newBook = new Book(title, author, pages, isRead);
+    myLibrary.push(newBook);
 }
 
+// Steps:
+
 // loops through the array and displays each book on the page
-function
 
 // It might help for now to manually add a few books to your array so you can see the display.
-
-
 
 // Add a “NEW BOOK” button that brings up a form allowing users to input the details for the new book: author, title, number of pages, whether it’s been read and anything else you might want.
 

@@ -16,25 +16,25 @@
 
         <div id="form">
             <p>Add new book</p>
-            <form action=# method="post">
+            <form name="addNewBookForm" onsubmit="return addBookToLibrary()">
                 <div class="form-row">
                     <label for="title">Title</label>
-                    <input type="text" id="title">
+                    <input type="text" name="title" id="title" required>
                 </div>
                 <div class="form-row">
                     <label for="author">Author</label>
-                    <input type="text" id="author">
+                    <input type="text" name="author" id="author" required>
                 </div>
                 <div class="form-row">
                     <label for="pages">Number Of Pages</label>
-                    <input type="number" id="pages">
+                    <input type="number" name="pages" id="pages" required>
                 </div>
                 <fieldset>
                     <legend>Have you read the book?</legend>
                     <label for="yes">Yes</label>
-                    <input type="radio" id="isReadYes" name="isRead" value="true">
+                    <input type="radio" id="isReadYes" name="isRead" value="true" required>
                     <label for="no">No</label>
-                    <input type="radio" id="isReadNo" name="isRead" value="false">
+                    <input type="radio" id="isReadNo" name="isRead" value="false" required>
                 </fieldset>
                 <div class="for-row">
                     <input type="submit">

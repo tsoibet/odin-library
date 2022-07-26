@@ -17,9 +17,14 @@ Book.prototype.info = function() {
     return bookInfo
 }
 
-function addBookToLibrary(title, author, pages, isRead) { 
-    const newBook = new Book(title, author, pages, isRead);
+function addBookToLibrary() { 
+    let titleInput = document.forms["addNewBookForm"]["title"].value;
+    let authorInput = document.forms["addNewBookForm"]["author"].value;
+    let pagesInput = document.forms["addNewBookForm"]["pages"].value;
+    let isReadInput = document.forms["addNewBookForm"]["isRead"].value;
+    let newBook = new Book(titleInput, authorInput, pagesInput, isReadInput);
     myLibrary.push(newBook);
+    return false;
 }
 
 // Steps:

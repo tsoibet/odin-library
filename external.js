@@ -17,6 +17,19 @@ Book.prototype.info = function() {
     return bookInfo
 }
 
+function displayBookInfo(book) {
+    console.log(book.info());
+    const para = document.createElement("p");
+    const node = document.createTextNode(book.title + " by " + book.author + ". " + book.pages + " pages. " + book.isRead);
+    para.appendChild(node);
+    const element = document.getElementById("library");
+    element.appendChild(para);
+}
+
+function displayLibrary() { 
+    myLibrary.forEach(displayBookInfo);
+}
+
 function addBookToLibrary() { 
     let titleInput = document.forms["addNewBookForm"]["title"].value;
     let authorInput = document.forms["addNewBookForm"]["author"].value;
@@ -27,11 +40,14 @@ function addBookToLibrary() {
     return false;
 }
 
-// Steps:
 
-// loops through the array and displays each book on the page
+let newBook1 = new Book("Test1","A1",25,true);
+myLibrary.push(newBook1);
+let newBook2 = new Book("Test2","A2",15,true);
+myLibrary.push(newBook2);
 
-// It might help for now to manually add a few books to your array so you can see the display.
+displayLibrary();
+
 
 // Add a “NEW BOOK” button that brings up a form allowing users to input the details for the new book: author, title, number of pages, whether it’s been read and anything else you might want.
 

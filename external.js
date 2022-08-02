@@ -19,11 +19,28 @@ Book.prototype.info = function() {
 
 function displayBookInfo(book) {
     console.log(book.info());
-    const para = document.createElement("p");
-    const node = document.createTextNode(book.title + " by " + book.author + ". " + book.pages + " pages. " + book.isRead);
-    para.appendChild(node);
-    const element = document.getElementById("library");
-    element.appendChild(para);
+
+    const title = document.createElement("div");
+    title.textContent = book.title
+    const author = document.createElement("div");
+    author.textContent = "by " + book.author;
+    const pages = document.createElement("div");
+    pages.textContent = book.pages + " pages";
+    const isRead = document.createElement("div");
+    if (book.isRead) {
+        isRead.textContent = "Finished";
+    } else {
+        isRead.textContent = "Yet to finish";
+    }
+
+    const card = document.createElement("div");
+    card.appendChild(title);
+    card.appendChild(author);
+    card.appendChild(pages);
+    card.appendChild(isRead);
+
+    const cards = document.querySelector("#cards");
+    cards.appendChild(card);
 }
 
 function displayLibrary() { 

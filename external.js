@@ -47,6 +47,8 @@ function displayBookInfo(book) {
 }
 
 function displayLibrary() { 
+    const library = document.querySelector("#library");
+    library.textContent = "";
     myLibrary.forEach(displayBookInfo);
 }
 
@@ -168,6 +170,7 @@ function addBookToLibrary() {
     let newBook = new Book(titleInput, authorInput, pagesInput, isReadInput);
     myLibrary.push(newBook);
     clearForm();
+    displayLibrary();
     return false;
 }
 
@@ -175,6 +178,8 @@ let newBook1 = new Book("Test1","A1",25,true);
 myLibrary.push(newBook1);
 let newBook2 = new Book("Test2","A2",15,true);
 myLibrary.push(newBook2);
+let newBook3 = new Book("Test3","A3",115,false);
+myLibrary.push(newBook3);
 
 displayLibrary();
 

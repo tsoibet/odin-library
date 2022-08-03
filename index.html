@@ -10,12 +10,11 @@
 </head>
 <body>
     <header>
-        Library
+        My Library
     </header>
     <div id="container">
 
         <div id="form">
-            <p>Add new book</p>
             <form name="addNewBookForm" onsubmit="return addBookToLibrary()">
                 <div class="form-row">
                     <label for="title">Title</label>
@@ -36,15 +35,14 @@
                     <label for="no">No</label>
                     <input type="radio" id="isReadNo" name="isRead" value="false" required>
                 </fieldset>
-                <div class="for-row">
-                    <input type="submit">
+                <div class="form-row">
+                    <input type="submit" value="Add book">
                 </div>
             </form>
         </div>
 
         <div id="library">
-            <p>My Library</p>
-            <div id="cards"></div>
+
         </div>
 
     </div>

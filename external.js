@@ -22,24 +22,29 @@ function displayBookInfo(book) {
 
     const title = document.createElement("div");
     title.textContent = book.title
+    title.classList.add('title');
     const author = document.createElement("div");
     author.textContent = "by " + book.author;
+    author.classList.add('author');
     const pages = document.createElement("div");
     pages.textContent = book.pages + " pages";
-    const isRead = document.createElement("div");
-    if (book.isRead) {
-        isRead.textContent = "Finished";
+    pages.classList.add('pages');
+    const status = document.createElement("div");
+    if (book.status) {
+        status.textContent = "Finished";
     } else {
-        isRead.textContent = "Yet to finish";
+        status.textContent = "Yet to finish";
     }
+    status.classList.add('status');
 
     const card = document.createElement("div");
     card.appendChild(title);
     card.appendChild(author);
     card.appendChild(pages);
-    card.appendChild(isRead);
+    card.appendChild(status);
+    card.classList.add('card');
 
-    const cards = document.querySelector("#cards");
+    const cards = document.querySelector("#library");
     cards.appendChild(card);
 }
 

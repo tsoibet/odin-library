@@ -65,6 +65,14 @@ form {
     box-shadow: 0.3rem 0.3rem 0 lightgrey;
 }
 
+.deleteButton {
+    align-self: flex-end;
+    padding: 0.15rem 0.3rem;
+
+    border-radius: 0.5rem;
+    border: 0.1rem solid white;
+}
+
 .title {
     font-size: 1.2rem;
 }
@@ -78,7 +86,7 @@ form {
 }
 
 .status {
-    align-self: flex-end;
+    align-self: flex-start;
     font-size: 0.8rem;
     font-style: italic;
 }

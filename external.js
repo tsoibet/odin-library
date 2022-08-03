@@ -17,7 +17,12 @@ Book.prototype.info = function() {
     return bookInfo
 }
 
-function displayBookInfo(book) {
+function displayBookInfo(book, index) {
+    const deleteButton = document.createElement("div");
+    deleteButton.id = index;
+    deleteButton.textContent = "X";
+    deleteButton.classList.add('deleteButton');
+    deleteButton.addEventListener("click", deleteBook);
     const title = document.createElement("div");
     title.textContent = book.title
     title.classList.add('title');
@@ -36,6 +41,7 @@ function displayBookInfo(book) {
     status.classList.add('status');
 
     const card = document.createElement("div");
+    card.appendChild(deleteButton);
     card.appendChild(title);
     card.appendChild(author);
     card.appendChild(pages);
@@ -50,6 +56,11 @@ function displayLibrary() {
     const library = document.querySelector("#library");
     library.textContent = "";
     myLibrary.forEach(displayBookInfo);
+}
+
+function deleteBook(event) {
+    myLibrary.splice(event.target.id, 1);
+    displayLibrary();
 }
 
 function showForm() {
@@ -186,9 +197,6 @@ displayLibrary();
 let formShown = false;
 const showFormBtn = document.querySelector("#showFormBtn");
 showFormBtn.addEventListener("click", showForm);
-
-// Add a button on each book’s display to remove the book from the library.
-// You will need to associate your DOM elements with the actual book objects in some way. One easy solution is giving them a data-attribute that corresponds to the index of the library array.
 
 // Add a button on each book’s display to change its read status.
 // To facilitate this you will want to create the function that toggles a book’s read status on your Book prototype instance.

@@ -39,6 +39,8 @@ function displayBookInfo(book, index) {
         status.textContent = "Yet to finish";
     }
     status.classList.add('status');
+    status.bookId = index;
+    status.addEventListener("click", changeReadStatus);
 
     const card = document.createElement("div");
     card.appendChild(deleteButton);
@@ -60,6 +62,16 @@ function displayLibrary() {
 
 function deleteBook(event) {
     myLibrary.splice(event.target.id, 1);
+    displayLibrary();
+}
+
+function changeReadStatus(event) {
+    if (myLibrary[event.target.bookId].isRead) {
+        myLibrary[event.target.bookId].isRead = false;
+    }
+    else {
+        myLibrary[event.target.bookId].isRead = true;
+    }
     displayLibrary();
 }
 
@@ -197,6 +209,3 @@ displayLibrary();
 let formShown = false;
 const showFormBtn = document.querySelector("#showFormBtn");
 showFormBtn.addEventListener("click", showForm);
-
-// Add a button on each book’s display to change its read status.
-// To facilitate this you will want to create the function that toggles a book’s read status on your Book prototype instance.

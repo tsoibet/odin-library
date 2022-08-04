@@ -32,12 +32,20 @@ function displayBookInfo(book, index) {
     const pages = document.createElement("div");
     pages.textContent = book.pages + " pages";
     pages.classList.add('pages');
-    const status = document.createElement("div");
+    const statusNo = document.createElement("div");
+    statusNo.textContent = "Yet to finish";
+    const statusYes = document.createElement("div");
+    statusYes.textContent = "Finished";
     if (book.isRead) {
-        status.textContent = "Finished";
+        statusYes.classList.add('applied');
+        statusNo.textContent = "";
     } else {
-        status.textContent = "Yet to finish";
+        statusNo.classList.add('applied');
+        statusYes.textContent = "";
     }
+    const status = document.createElement("div");
+    status.appendChild(statusNo);
+    status.appendChild(statusYes);
     status.classList.add('status');
     status.bookId = index;
     status.addEventListener("click", changeReadStatus);
@@ -66,11 +74,12 @@ function deleteBook(event) {
 }
 
 function changeReadStatus(event) {
-    if (myLibrary[event.target.bookId].isRead) {
-        myLibrary[event.target.bookId].isRead = false;
+    console.log(event.target);
+    if (myLibrary[event.target.parentNode.bookId].isRead) {
+        myLibrary[event.target.parentNode.bookId].isRead = false;
     }
     else {
-        myLibrary[event.target.bookId].isRead = true;
+        myLibrary[event.target.parentNode.bookId].isRead = true;
     }
     displayLibrary();
 }
@@ -136,7 +145,7 @@ function showForm() {
     status.textContent = "Have you finished the book?";
 
     const yesLabel = document.createElement("label");
-    yesLabel.setAttribute("for", "yes");
+    yesLabel.setAttribute("for", "isReadYes");
     yesLabel.textContent = "Yes";
     const yesInput = document.createElement("input");
     yesInput.type = "radio";
@@ -146,7 +155,7 @@ function showForm() {
     yesInput.required = true;
 
     const noLabel = document.createElement("label");
-    noLabel.setAttribute("for", "no");
+    noLabel.setAttribute("for", "isReadNo");
     noLabel.textContent = "No";
     const noInput = document.createElement("input");
     noInput.type = "radio";
@@ -155,13 +164,16 @@ function showForm() {
     noInput.value = "false";
     noInput.required = true;
 
+    const statusInput = document.createElement("div");
+    statusInput.appendChild(yesLabel);
+    statusInput.appendChild(yesInput);
+    statusInput.appendChild(noLabel);
+    statusInput.appendChild(noInput);
+
     const formRow4 = document.createElement("div");
     formRow4.classList.add("form-row");
     formRow4.appendChild(status);
-    formRow4.appendChild(yesLabel);
-    formRow4.appendChild(yesInput);
-    formRow4.appendChild(noLabel);
-    formRow4.appendChild(noInput);
+    formRow4.appendChild(statusInput);
     addNewBookForm.appendChild(formRow4);
 
     const submitButton = document.createElement("input");

@@ -209,12 +209,15 @@ function addBookToLibrary() {
     return false;
 }
 
-let newBook1 = new Book("Test1","A1",25,true);
+// Example books
+let newBook1 = new Book("Harry Potter", "J.K. Rowling", 1234, false);
 myLibrary.push(newBook1);
-let newBook2 = new Book("Test2","A2",15,true);
+let newBook2 = new Book("The Lord of the Rings", "J.R.R. Tolkien", 1357, true);
 myLibrary.push(newBook2);
-let newBook3 = new Book("Test3","A3",115,false);
+let newBook3 = new Book("A dog's life", "Nora", 18, false);
 myLibrary.push(newBook3);
+let newBook4 = new Book("Project: Library", "Betsy", 227, true);
+myLibrary.push(newBook4);
 
 displayLibrary();
 

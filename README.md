@@ -6,3 +6,5 @@ Live demo: https://tsoibet.github.io/odin-library/
 - HTML
 - CSS
 - Javascript (Vanilla)
+  - Object constructor
+  - DOM manipulation

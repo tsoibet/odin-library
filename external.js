@@ -1,20 +1,11 @@
 let myLibrary = [];
-
-function Book(title, author, pages, isRead) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.isRead = isRead;
-}
-
-Book.prototype.info = function() {
-    bookInfo = {
-        Title: this.title,
-        Author: this.author,
-        Pages: this.pages,
-        IsRead: this.isRead
+class Book {
+    constructor(title, author, pages, isRead) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.isRead = isRead;
     }
-    return bookInfo
 }
 
 function displayBookInfo(book, index) {

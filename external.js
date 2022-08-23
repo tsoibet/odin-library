@@ -1,62 +1,64 @@
 let myLibrary = [];
 class Book {
+
     constructor(title, author, pages, isRead) {
         this.title = title;
         this.author = author;
         this.pages = pages;
         this.isRead = isRead;
     }
-}
 
-function displayBookInfo(book, index) {
-    const deleteButton = document.createElement("div");
-    deleteButton.id = index;
-    deleteButton.textContent = "X";
-    deleteButton.classList.add('deleteButton');
-    deleteButton.addEventListener("click", deleteBook);
-    const title = document.createElement("div");
-    title.textContent = book.title
-    title.classList.add('title');
-    const author = document.createElement("div");
-    author.textContent = "by " + book.author;
-    author.classList.add('author');
-    const pages = document.createElement("div");
-    pages.textContent = book.pages + " pages";
-    pages.classList.add('pages');
-    const statusNo = document.createElement("div");
-    statusNo.textContent = "Yet to finish";
-    const statusYes = document.createElement("div");
-    statusYes.textContent = "Finished";
-    if (book.isRead) {
-        statusYes.classList.add('applied');
-        statusNo.textContent = "";
-    } else {
-        statusNo.classList.add('applied');
-        statusYes.textContent = "";
+    displayBookInfo(book, index) {
+        const deleteButton = document.createElement("div");
+        deleteButton.id = index;
+        deleteButton.textContent = "X";
+        deleteButton.classList.add('deleteButton');
+        deleteButton.addEventListener("click", deleteBook);
+        const title = document.createElement("div");
+        title.textContent = book.title
+        title.classList.add('title');
+        const author = document.createElement("div");
+        author.textContent = "by " + book.author;
+        author.classList.add('author');
+        const pages = document.createElement("div");
+        pages.textContent = book.pages + " pages";
+        pages.classList.add('pages');
+        const statusNo = document.createElement("div");
+        statusNo.textContent = "Yet to finish";
+        const statusYes = document.createElement("div");
+        statusYes.textContent = "Finished";
+        if (book.isRead) {
+            statusYes.classList.add('applied');
+            statusNo.textContent = "";
+        } else {
+            statusNo.classList.add('applied');
+            statusYes.textContent = "";
+        }
+        const status = document.createElement("div");
+        status.appendChild(statusNo);
+        status.appendChild(statusYes);
+        status.classList.add('status');
+        status.bookId = index;
+        status.addEventListener("click", changeReadStatus);
+    
+        const card = document.createElement("div");
+        card.appendChild(deleteButton);
+        card.appendChild(title);
+        card.appendChild(author);
+        card.appendChild(pages);
+        card.appendChild(status);
+        card.classList.add('card');
+    
+        const cards = document.querySelector("#library");
+        cards.appendChild(card);
     }
-    const status = document.createElement("div");
-    status.appendChild(statusNo);
-    status.appendChild(statusYes);
-    status.classList.add('status');
-    status.bookId = index;
-    status.addEventListener("click", changeReadStatus);
 
-    const card = document.createElement("div");
-    card.appendChild(deleteButton);
-    card.appendChild(title);
-    card.appendChild(author);
-    card.appendChild(pages);
-    card.appendChild(status);
-    card.classList.add('card');
-
-    const cards = document.querySelector("#library");
-    cards.appendChild(card);
 }
 
 function displayLibrary() { 
     const library = document.querySelector("#library");
     library.textContent = "";
-    myLibrary.forEach(displayBookInfo);
+    myLibrary.forEach((book, index) => book.displayBookInfo(book, index));
 }
 
 function deleteBook(event) {

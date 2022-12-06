@@ -95,6 +95,14 @@ function showForm() {
     titleInput.name = "title";
     titleInput.id = "title";
     titleInput.required = true;
+    titleInput.addEventListener("input", () => {
+        if (titleInput.validity.valueMissing) {
+            titleInput.setCustomValidity("Book title is missing!");
+            titleInput.reportValidity();
+        } else {
+            titleInput.setCustomValidity("");
+        }
+    });
 
     const formRow1 = document.createElement("div");
     formRow1.classList.add("form-row");
@@ -111,6 +119,14 @@ function showForm() {
     authorInput.name = "author";
     authorInput.id = "author";
     authorInput.required = true;
+    authorInput.addEventListener("input", () => {
+        if (authorInput.validity.valueMissing) {
+            authorInput.setCustomValidity("Who is the author?");
+            authorInput.reportValidity();
+        } else {
+            authorInput.setCustomValidity("");
+        }
+    });
 
     const formRow2 = document.createElement("div");
     formRow2.classList.add("form-row");
@@ -127,6 +143,14 @@ function showForm() {
     pagesInput.name = "pages";
     pagesInput.id = "pages";
     pagesInput.required = true;
+    pagesInput.addEventListener("input", () => {
+        if (pagesInput.validity.valueMissing) {
+            pagesInput.setCustomValidity("Don't forget to fill in the number of pages!");
+            pagesInput.reportValidity();
+        } else {
+            pagesInput.setCustomValidity("");
+        }
+    });
 
     const formRow3 = document.createElement("div");
     formRow3.classList.add("form-row");

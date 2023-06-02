@@ -1,8 +1,11 @@
 # Library
 
-Live demo: https://tsoibet.github.io/odin-library/
+Live demo: https://odin-library-f9784.web.app/
 
 ### Tech Stack:
+- Firebase
+  - Firestore database
+  - Hosting
 - HTML
 - CSS
 - Javascript (Vanilla)
